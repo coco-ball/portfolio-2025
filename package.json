@@ -1,6 +1,8 @@
 {
   "name": "portfolio-2025",
   "version": "1.0.0",
+  "private": true,
+  "homepage": "https://coco-ball.github.io/portfolio-2025",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
