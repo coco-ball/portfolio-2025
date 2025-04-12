@@ -4,7 +4,7 @@ import Main from "./pages/Main";
 import CurrentWorks from "./pages/CurrentWorks";
 import About from "./pages/About";
 import Header from "./components/Header";
-import Brachio from "./components/brachio";
+import Brachio from "./components/Brachio";
 import { CanvasProvider } from "./contexts/CanvasContext";
 import SpiralCanvas from "./components/SpiralCanvas";
 
