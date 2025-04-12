@@ -21,7 +21,7 @@ const projectData = [
 
 function CurrentWorks() {
   return (
-    <div className="h-screen flex gap-20 items-center justify-center text-black">
+    <div className="h-screen flex flex-col md:flex-row gap-20 items-center md:justify-center py-24 text-black overflow-scroll">
       {projectData.map((project, index) => (
         <ProjectPreview
           key={index}
