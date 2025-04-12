@@ -4,6 +4,7 @@ import { useFrame, Canvas } from "@react-three/fiber";
 // import { useProject } from "@/contexts/ProjectContext";
 import { useCanvas } from "../contexts/CanvasContext";
 import { OrbitControls } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 const SpiralMesh = ({ color }: { color: THREE.Color }) => {
@@ -43,6 +44,21 @@ const SpiralMesh = ({ color }: { color: THREE.Color }) => {
       <meshStandardMaterial color={color} />
     </mesh>
   );
+};
+
+const CameraUpdater = ({
+  cameraPosition,
+}: {
+  cameraPosition: [number, number, number];
+}) => {
+  const { camera } = useThree();
+
+  useEffect(() => {
+    camera.position.set(...cameraPosition);
+    camera.lookAt(0, 0, 0); // 필요 시
+  }, [cameraPosition]);
+
+  return null; // 화면에 렌더링되는 건 없음
 };
 
 export default function SpiralCanvas() {
@@ -90,9 +106,10 @@ export default function SpiralCanvas() {
         transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
         transitionDuration: "500ms",
       }}
-      camera={{ position: cameraPosition, fov: 75, near: 1, far: 10000 }}
+      camera={{ position: cameraPosition, fov: 55, near: 1, far: 10000 }}
       gl={{ antialias: true }}
     >
+      <CameraUpdater cameraPosition={cameraPosition} />
       <ambientLight intensity={10} />
       {/* <directionalLight position={[10, 10, 10]} intensity={1.5} />{" "} */}
       <OrbitControls
