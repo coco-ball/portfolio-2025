@@ -7,7 +7,7 @@ import Header from "./components/Header";
 import Brachio from "./components/Brachio";
 import { CanvasProvider } from "./contexts/CanvasContext";
 import SpiralCanvas from "./components/SpiralCanvas";
-import ProjectDetail from "./pages/projectDetail";
+import ProjectDetail from "./pages/ProjectDetail";
 
 function App() {
   return (
