@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Brachio from "./components/Brachio";
 import { CanvasProvider } from "./contexts/CanvasContext";
 import SpiralCanvas from "./components/SpiralCanvas";
+import ProjectDetail from "./pages/projectDetail";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/works" element={<CurrentWorks />} />
           <Route path="/about" element={<About />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
         </Routes>
       </CanvasProvider>
     </Router>

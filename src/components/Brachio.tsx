@@ -1,8 +1,14 @@
 import React from "react";
 import { useCanvas } from "../contexts/CanvasContext";
+import { useLocation } from "react-router-dom";
 
 export default function Brachio() {
   const { resetSpiralCanvas } = useCanvas();
+  const location = useLocation();
+
+  if (location.pathname.startsWith("/project/")) {
+    return null;
+  }
 
   return (
     <div className="absolute right-10 md:right-14 bottom-10 z-10 flex gap-4 select-none">
