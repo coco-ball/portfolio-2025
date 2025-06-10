@@ -1,6 +1,6 @@
 import React from "react";
 import ProjectPreview from "../components/ProjectPreview";
-import projectData from "../data/ProjectData";
+import projectData from "../data/temp";
 
 function CurrentWorks() {
   return (
