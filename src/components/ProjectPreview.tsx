@@ -1,11 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import ThumbPicture from "./ThumbPicture";
 
 interface ProjectPreviewProps {
   id: string;
   name: string;
-  thumbnail: string;
+  thumbnail: string; // 예: "/images/projects/mindly/thumbnail.png"
   description: string;
+  /** 첫 행 몇 개는 true로 넘겨주면 LCP 빨라짐 (부모에서 i<4 등으로) */
+  priority?: boolean;
 }
 
 export default function ProjectPreview({
@@ -13,6 +16,7 @@ export default function ProjectPreview({
   name,
   thumbnail,
   description,
+  priority = false,
 }: ProjectPreviewProps) {
   const navigate = useNavigate();
 
@@ -21,11 +25,15 @@ export default function ProjectPreview({
       onClick={() => navigate(`/project/${id}`)}
       className="w-[21rem] hover:scale-105 transition-all duration-500 hover:cursor-pointer"
     >
-      <img
-        src={thumbnail}
+      <ThumbPicture
+        png={thumbnail}
         alt={name}
+        // 3:2 비율로 CLS 고정 — 실제 렌더 폭은 w-[21rem]로 제한됨
+        width={600}
+        height={400}
+        sizes="(min-width:768px) 336px, 80vw" // 21rem=336px 기준
+        priority={priority}
         className="w-full mb-5 rounded-lg object-cover"
-        style={{ aspectRatio: "3 / 2" }}
       />
       <p className="text-4xl mb-2">{name}</p>
       <p className="text-md hyphens-auto">{description}</p>
