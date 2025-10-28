@@ -40,15 +40,28 @@ function About() {
       <div className="flex gap-6 mt-16 mb-40">
         <a
           href="mailto:kidbean02@snu.ac.kr"
-          className="border-4 rounded-full border-black flex justify-center items-center w-16 h-16"
+          className="border-4 rounded-full border-black flex justify-center items-center w-16 h-16 hover:scale-105 hover:cursor-pointer transition-all duration-500"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <img src="/images/mail.png" className="w-11 h-11" />
         </a>
         <a
           href="https://www.linkedin.com/in/chaewonyu"
-          className="border-4 rounded-full border-black flex justify-center items-center w-16 h-16 pl-[0.2rem]"
+          className="border-4 rounded-full border-black flex justify-center items-center w-16 h-16 pl-[0.1rem] hover:scale-105 hover:cursor-pointer transition-all duration-500"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          in
+          <img src="/images/LinkedIn.png" className="w-7 h-7" />
+        </a>
+        <a
+          href="https://cwyu.kr/"
+          className=" flex justify-center items-center h-16 pl-[0.1rem] ml-4 hover:scale-105 hover:cursor-pointer transition-all duration-500"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Even More Works</span>
+          <span className="text-[2.75rem] pl-1">🪺</span>
         </a>
       </div>
     </div>
