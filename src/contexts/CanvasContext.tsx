@@ -16,7 +16,10 @@ type CanvasContextType = {
   setBgColor: React.Dispatch<React.SetStateAction<string>>;
   spiralColor: THREE.Color;
   setSpiralColor: React.Dispatch<React.SetStateAction<THREE.Color>>;
-  resetSpiralCanvas: () => void;
+  resetSpiralCanvas: (opts?: {
+    randomizeSpiral?: boolean;
+    randomizeBg?: boolean;
+  }) => void;
 };
 
 const CanvasContext = createContext<CanvasContextType | undefined>(undefined);
@@ -28,38 +31,44 @@ export const CanvasProvider: React.FC<{ children: ReactNode }> = ({
     [number, number, number]
   >([500, 0, 0]);
   const [bgColor, setBgColor] = useState<string>("rgb(250,250,250)");
+
   const [spiralColor, setSpiralColor] = useState<THREE.Color>(
-    new THREE.Color(255, 255, 255)
+    () => new THREE.Color("#dbedf7")
   );
-  const resetSpiralCanvas: () => void = () => {
+
+  const resetSpiralCanvas = (opts?: {
+    randomizeSpiral?: boolean;
+    randomizeBg?: boolean;
+  }) => {
+    const { randomizeSpiral = true, randomizeBg = false } = opts ?? {};
+
     const x = Math.random() * 1150;
     const y = Math.random() * 800 - 400;
     const z = Math.random() * 800 - 400;
     const randomCameraPosition: [number, number, number] = [x, y, z];
 
-    // const r = Math.floor(Math.random() * 256) + 20;
-    // const g = Math.floor(Math.random() * 256);
-    // const b = Math.floor(Math.random() * 256) + 20;
-    const r = (Math.floor(Math.random() * 6) + 200) / 255; // 200~255
-    const g = (Math.floor(Math.random() * 6) + 200) / 255;
-    const b = (Math.floor(Math.random() * 6) + 200) / 255;
-    const randomBgColor: string = `rgb(${r}, ${g}, ${b})`;
+    if (randomizeBg) {
+      const r = Math.floor(Math.random() * 56) + 200; // 200~255
+      const g = Math.floor(Math.random() * 56) + 200;
+      const b = Math.floor(Math.random() * 56) + 200;
+      const randomBgColor = `rgb(${r}, ${g}, ${b})`;
+      setBgColor(randomBgColor);
+    }
 
-    const randomSpiralColor: THREE.Color = new THREE.Color(
-      Math.random(),
-      Math.random(),
-      Math.random()
-    );
-
-    console.log(randomCameraPosition);
+    if (randomizeSpiral) {
+      const randomSpiralColor = new THREE.Color(
+        Math.random(),
+        Math.random(),
+        Math.random()
+      );
+      setSpiralColor(randomSpiralColor);
+    }
 
     setCameraPosition(randomCameraPosition);
-    // setBgColor(randomBgColor);
-    setSpiralColor(randomSpiralColor);
   };
 
   useEffect(() => {
-    resetSpiralCanvas();
+    resetSpiralCanvas({ randomizeSpiral: false, randomizeBg: false });
   }, []);
 
   return (
