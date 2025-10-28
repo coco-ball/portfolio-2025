@@ -25,15 +25,19 @@ function Main() {
       <div className="flex gap-6 mt-16">
         <a
           href="mailto:kidbean02@snu.ac.kr"
-          className="border-4 rounded-full border-black flex justify-center items-center w-16 h-16"
+          className="border-4 rounded-full border-black flex justify-center items-center w-16 h-16 hover:scale-105 hover:cursor-pointer transition-all duration-500"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <img src="/images/mail.png" className="w-11 h-11" />
         </a>
         <a
           href="https://www.linkedin.com/in/chaewonyu"
-          className="border-4 rounded-full border-black flex justify-center items-center w-16 h-16 pl-[0.2rem]"
+          className="border-4 rounded-full border-black flex justify-center items-center pl-[0.1rem] pb-[0.05rem] w-16 h-16 hover:scale-105 hover:cursor-pointer transition-all duration-500"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          in
+          <img src="/images/LinkedIn.png" className="w-9 h-9" />
         </a>
       </div>
     </div>
