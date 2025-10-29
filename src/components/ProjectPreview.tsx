@@ -4,17 +4,21 @@ import ThumbPicture from "./ThumbPicture";
 
 interface ProjectPreviewProps {
   id: string;
-  name: string;
+  title: string;
   thumbnail: string; // 예: "/images/projects/mindly/thumbnail.png"
-  description: string;
+  category: string;
+  period: string;
+  description?: string;
   /** 첫 행 몇 개는 true로 넘겨주면 LCP 빨라짐 (부모에서 i<4 등으로) */
   priority?: boolean;
 }
 
 export default function ProjectPreview({
   id,
-  name,
+  title,
   thumbnail,
+  category,
+  period,
   description,
   priority = false,
 }: ProjectPreviewProps) {
@@ -27,7 +31,7 @@ export default function ProjectPreview({
     >
       <ThumbPicture
         png={thumbnail}
-        alt={name}
+        alt={title}
         // 3:2 비율로 CLS 고정 — 실제 렌더 폭은 w-[21rem]로 제한됨
         width={600}
         height={400}
@@ -35,7 +39,9 @@ export default function ProjectPreview({
         priority={priority}
         className="w-full mb-5 rounded-lg object-cover"
       />
-      <p className="text-4xl mb-2">{name}</p>
+      <p className="text-4xl mb-2">{title}</p>
+      <p className="text-md hyphens-auto">{period}</p>
+      <p className="text-md hyphens-auto">{category}</p>
       <p className="text-md hyphens-auto">{description}</p>
     </div>
   );
